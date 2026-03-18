@@ -1,0 +1,126 @@
+@BlogApiPrev_HostAddress = http://localhost:5056
+
+POST {{BlogApiPrev_HostAddress}}/api/user/register
+Content-Type: application/json
+
+{
+	"username": "demoUser",
+	"password": "DemoPass123!"
+}
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/login
+Content-Type: application/json
+
+{
+	"username": "demoUser",
+	"password": "DemoPass123!"
+}
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/profile
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/profile
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"name": "Jamie Rivera",
+	"profilePictureUrl": "https://example.com/avatar.png",
+	"description": "I trade tutoring and dog walking hours."
+}
+
+###
+
+PUT {{BlogApiPrev_HostAddress}}/api/user/profile
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"description": "Now offering math tutoring and coding help."
+}
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/help-categories
+Accept: application/json
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/help-posts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"category": "Home Help",
+	"subcategory": "Home Cleaning",
+	"title": "I can help with weekend home cleaning",
+	"description": "Available Saturdays for apartment and small home cleaning.",
+	"latitude": 33.9425,
+	"longitude": -118.4081
+}
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/help-posts?category=Home%20Help&subcategory=Home%20Cleaning&latitude=33.9425&longitude=-118.4081&radiusKm=50
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/my-help-posts
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/help-posts/1/close
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/chats/start
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"helpPostId": 1,
+	"message": "Hey I can help, are you free tomorrow morning?"
+}
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/chats
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+GET {{BlogApiPrev_HostAddress}}/api/user/chats/1/messages
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/chats/1/messages
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"message": "Yes, 10AM works."
+}
+
+###
+
+POST {{BlogApiPrev_HostAddress}}/api/user/chats/1/end
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
