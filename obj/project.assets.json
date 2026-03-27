@@ -4622,6 +4622,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
       "Swashbuckle.AspNetCore >= 9.0.0",
+      "Swashbuckle.AspNetCore.Swagger >= 9.0.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 9.0.0",
       "Swashbuckle.AspNetCore.SwaggerUI >= 9.0.0"
     ]
@@ -4698,6 +4699,10 @@
             "version": "[9.0.0, )"
           },
           "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          },
+          "Swashbuckle.AspNetCore.Swagger": {
             "target": "Package",
             "version": "[9.0.0, )"
           },
