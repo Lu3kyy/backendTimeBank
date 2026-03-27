@@ -157,3 +157,10 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\refint
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\BlogApiPrev.pdb
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\BlogApiPrev.genruntimeconfig.cache
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\ref\BlogApiPrev.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\web.config
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\appsettings.Development.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\appsettings.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\BlogApiPrev.deps.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\BlogApiPrev.runtimeconfig.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\BlogApiPrev.staticwebassets.endpoints.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish-clean2\package-lock.json
