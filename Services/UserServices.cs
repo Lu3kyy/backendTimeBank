@@ -281,7 +281,6 @@ namespace BlogApiPrev.Services
             }
 
             currentUser.Name = profile.Name.Trim();
-            currentUser.ProfilePictureUrl = profile.ProfilePictureUrl?.Trim();
             currentUser.Description = profile.Description?.Trim();
             currentUser.UpdatedAtUtc = DateTime.UtcNow;
 
@@ -304,16 +303,28 @@ namespace BlogApiPrev.Services
                 currentUser.Name = profile.Name.Trim();
             }
 
-            if (profile.ProfilePictureUrl is not null)
-            {
-                currentUser.ProfilePictureUrl = profile.ProfilePictureUrl.Trim();
-            }
-
             if (profile.Description is not null)
             {
                 currentUser.Description = profile.Description.Trim();
             }
 
+            currentUser.UpdatedAtUtc = DateTime.UtcNow;
+
+            _dataContext.Users.Update(currentUser);
+            await _dataContext.SaveChangesAsync();
+            return MapToUserInfo(currentUser);
+        }
+
+        public async Task<UserInfoDTO?> SetProfilePictureUrlAsync(int userId, string pictureUrl)
+        {
+            var currentUser = await _dataContext.Users.SingleOrDefaultAsync(user => user.Id == userId);
+
+            if (currentUser == null)
+            {
+                return null;
+            }
+
+            currentUser.ProfilePictureUrl = pictureUrl.Trim();
             currentUser.UpdatedAtUtc = DateTime.UtcNow;
 
             _dataContext.Users.Update(currentUser);

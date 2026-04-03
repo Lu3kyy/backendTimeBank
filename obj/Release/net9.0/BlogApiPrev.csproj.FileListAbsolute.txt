@@ -330,3 +330,6 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\refint\BlogApi
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\BlogApiPrev.pdb
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\BlogApiPrev.genruntimeconfig.cache
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\ref\BlogApiPrev.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\Azure.Storage.Blobs.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\Azure.Storage.Common.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\System.IO.Hashing.dll

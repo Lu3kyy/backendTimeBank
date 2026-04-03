@@ -1,5 +1,6 @@
 using System.Text;
 using BlogApiPrev.Context;
+using BlogApiPrev.Models.Configuration;
 using BlogApiPrev.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddScoped<UserServices>();
+builder.Services.Configure<BlobStorageOptions>(builder.Configuration.GetSection(BlobStorageOptions.SectionName));
+builder.Services.AddScoped<BlobStorageService>();
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
