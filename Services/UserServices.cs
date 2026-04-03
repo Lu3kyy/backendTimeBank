@@ -153,6 +153,124 @@ namespace BlogApiPrev.Services
             return MapToUserInfo(currentUser);
         }
 
+        public async Task<List<UserInfoDTO>> GetProfilesAsync(
+            string? search,
+            int skip = 0,
+            int take = 20,
+            bool random = false,
+            bool onlyComplete = false,
+            string? city = null,
+            double? latitude = null,
+            double? longitude = null,
+            double? radiusKm = null)
+        {
+            skip = Math.Max(skip, 0);
+
+            IQueryable<UserModel> query = _dataContext.Users.AsNoTracking();
+
+            query = onlyComplete
+                ? query.Where(user =>
+                    !string.IsNullOrWhiteSpace(user.Name) &&
+                    !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) &&
+                    !string.IsNullOrWhiteSpace(user.Description))
+                : query.Where(user =>
+                    !string.IsNullOrWhiteSpace(user.Name) ||
+                    !string.IsNullOrWhiteSpace(user.ProfilePictureUrl) ||
+                    !string.IsNullOrWhiteSpace(user.Description));
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var normalizedSearch = search.Trim().ToLower();
+                query = query.Where(user =>
+                    user.Username.ToLower().Contains(normalizedSearch) ||
+                    (user.Name != null && user.Name.ToLower().Contains(normalizedSearch)) ||
+                    (user.Description != null && user.Description.ToLower().Contains(normalizedSearch)));
+            }
+
+            if (!string.IsNullOrWhiteSpace(city))
+            {
+                var normalizedCity = city.Trim().ToLower();
+                query = query.Where(user =>
+                    (user.Name != null && user.Name.ToLower().Contains(normalizedCity)) ||
+                    (user.Description != null && user.Description.ToLower().Contains(normalizedCity)));
+            }
+
+            var useDistanceSort = latitude.HasValue && longitude.HasValue;
+
+            if (useDistanceSort)
+            {
+                query = query.OrderByDescending(user => user.UpdatedAtUtc);
+            }
+            else
+            {
+                query = random
+                    ? query.OrderBy(user => Guid.NewGuid())
+                    : query.OrderByDescending(user => user.UpdatedAtUtc);
+
+                query = query.Skip(skip);
+
+                if (take > 0)
+                {
+                    take = Math.Clamp(take, 1, 100);
+                    query = query.Take(take);
+                }
+            }
+
+            var users = await query.ToListAsync();
+
+            var mapped = users.Select(MapToUserInfo).ToList();
+
+            if (useDistanceSort)
+            {
+                var latestLocationsByUserId = await _dataContext.HelpPosts
+                    .AsNoTracking()
+                    .Where(post =>
+                        post.Latitude.HasValue &&
+                        post.Longitude.HasValue &&
+                        users.Select(user => user.Id).Contains(post.CreatedByUserId))
+                    .OrderByDescending(post => post.CreatedAtUtc)
+                    .ToListAsync();
+
+                var firstLocationPerUser = latestLocationsByUserId
+                    .GroupBy(post => post.CreatedByUserId)
+                    .ToDictionary(group => group.Key, group => group.First());
+
+                foreach (var profile in mapped)
+                {
+                    if (firstLocationPerUser.TryGetValue(profile.Id, out var locationPost))
+                    {
+                        profile.DistanceKm = CalculateDistanceKm(
+                            latitude!.Value,
+                            longitude!.Value,
+                            locationPost.Latitude!.Value,
+                            locationPost.Longitude!.Value);
+                    }
+                }
+
+                if (radiusKm.HasValue)
+                {
+                    mapped = mapped
+                        .Where(profile => profile.DistanceKm.HasValue && profile.DistanceKm.Value <= radiusKm.Value)
+                        .ToList();
+                }
+
+                mapped = mapped
+                    .OrderBy(profile => profile.DistanceKm ?? double.MaxValue)
+                    .ThenByDescending(profile => users.First(user => user.Id == profile.Id).UpdatedAtUtc)
+                    .ToList();
+
+                mapped = mapped.Skip(skip).ToList();
+
+                if (take > 0)
+                {
+                    take = Math.Clamp(take, 1, 100);
+                    mapped = mapped.Take(take).ToList();
+                }
+            }
+
+            return mapped;
+        }
+
         public async Task<UserInfoDTO?> CreateProfileAsync(int userId, ProfileUpsertDTO profile)
         {
             var currentUser = await _dataContext.Users.SingleOrDefaultAsync(user => user.Id == userId);

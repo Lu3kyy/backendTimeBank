@@ -7,5 +7,6 @@ namespace BlogApiPrev.Models.DTOS
         public string? Name {get; set;}
         public string? ProfilePictureUrl {get; set;}
         public string? Description {get; set;}
+        public double? DistanceKm { get; set; }
     }
 }

@@ -4628,19 +4628,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hairt\\.nuget\\packages\\": {}
+    "C:\\Users\\mommy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
+      "projectUniqueName": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
       "projectName": "BlogApiPrev",
-      "projectPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-      "packagesPath": "C:\\Users\\hairt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\obj\\",
+      "projectPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
+      "packagesPath": "C:\\Users\\mommy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hairt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mommy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

@@ -36,6 +36,22 @@ namespace BlogApiPrev.Controllers
             return Ok(profile);
         }
 
+        [HttpGet("profiles")]
+        public async Task<IActionResult> GetProfiles(
+            [FromQuery] string? search = null,
+            [FromQuery] int skip = 0,
+            [FromQuery] int take = 20,
+            [FromQuery] bool random = false,
+            [FromQuery] bool onlyComplete = false,
+            [FromQuery] string? city = null,
+            [FromQuery] double? latitude = null,
+            [FromQuery] double? longitude = null,
+            [FromQuery] double? radiusKm = null)
+        {
+            var profiles = await _userServices.GetProfilesAsync(search, skip, take, random, onlyComplete, city, latitude, longitude, radiusKm);
+            return Ok(profiles);
+        }
+
         [HttpPost("profile")]
         public async Task<IActionResult> CreateOrStoreProfile([FromBody] ProfileUpsertDTO profile)
         {
