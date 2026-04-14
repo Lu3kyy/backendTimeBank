@@ -19,29 +19,13 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v9.0
 build_property.RootNamespace = BlogApiPrev
 build_property.RootNamespace = BlogApiPrev
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-build_property.ProjectDir = C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\
-=======
 build_property.ProjectDir = C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\
->>>>>>> Stashed changes
-=======
-build_property.ProjectDir = C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\
->>>>>>> 4fe13342b7b185725179382b9ef2065eb46b6945
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-build_property.MSBuildProjectDirectory = C:\Users\hairt\Desktop\timebankbackend\backendTimeBank
-=======
 build_property.MSBuildProjectDirectory = C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank
->>>>>>> Stashed changes
-=======
-build_property.MSBuildProjectDirectory = C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank
->>>>>>> 4fe13342b7b185725179382b9ef2065eb46b6945
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 

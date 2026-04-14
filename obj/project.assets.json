@@ -4750,25 +4750,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< Updated upstream
-    "C:\\Users\\hairt\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\darcy\\.nuget\\packages\\": {}
->>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-      "projectUniqueName": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-      "projectName": "BlogApiPrev",
-      "projectPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-      "packagesPath": "C:\\Users\\hairt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\hairt\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
       "projectUniqueName": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
       "projectName": "BlogApiPrev",
       "projectPath": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
@@ -4777,7 +4763,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\darcy\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> Stashed changes
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -4896,5 +4881,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

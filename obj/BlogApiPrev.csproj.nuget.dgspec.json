@@ -1,22 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
-    "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-        "projectName": "BlogApiPrev",
-        "projectPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-        "packagesPath": "C:\\Users\\hairt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\hairt\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
     "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj": {}
   },
   "projects": {
@@ -31,7 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\darcy\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> Stashed changes
         ],
         "originalTargetFrameworks": [
           "net9.0"
