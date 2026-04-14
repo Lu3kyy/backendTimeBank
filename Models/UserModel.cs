@@ -3,6 +3,7 @@ namespace BlogApiPrev.Models
     public class UserModel
     {
         public int Id {get; set;}
+        public int Credits { get; set; } = 10;
         public string Username {get; set;} = string.Empty;
         public string Salt {get; set;} = string.Empty;
         public string Hash {get; set;} = string.Empty;

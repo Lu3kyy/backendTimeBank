@@ -12,5 +12,12 @@ namespace BlogApiPrev.Context
         public DbSet<TransactionModel> Transactions { get; set; }
 
         public DataContext(DbContextOptions options) : base (options){}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserModel>()
+                .Property(user => user.Credits)
+                .HasDefaultValue(10);
+        }
     }
 }

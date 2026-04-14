@@ -98,7 +98,8 @@ namespace BlogApiPrev.Controllers
 
         [HttpPost("profile-picture")]
         [RequestSizeLimit(10_000_000)]
-        public async Task<IActionResult> UploadProfilePicture([FromForm] IFormFile file)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile file)
         {
             if (!_blobStorageService.IsConfigured())
             {
