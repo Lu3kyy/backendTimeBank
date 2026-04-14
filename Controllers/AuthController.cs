@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlogApiPrev.Controllers
 {
     [ApiController]
-    [Route("api/user")]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly UserServices _userServices;

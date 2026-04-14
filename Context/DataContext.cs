@@ -1,3 +1,4 @@
+using backendTimeBank.Models;
 using BlogApiPrev.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,7 @@ namespace BlogApiPrev.Context
         public DbSet<ChatMessageModel> ChatMessages { get; set; }
         public DbSet<TransactionModel> Transactions { get; set; }
 
+        //Test commit
         public DataContext(DbContextOptions options) : base (options){}
     }
 }

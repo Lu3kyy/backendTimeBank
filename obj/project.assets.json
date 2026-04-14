@@ -4750,19 +4750,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hairt\\.nuget\\packages\\": {}
+    "C:\\Users\\darcy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
+      "projectUniqueName": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
       "projectName": "BlogApiPrev",
-      "projectPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\BlogApiPrev.csproj",
-      "packagesPath": "C:\\Users\\hairt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hairt\\Desktop\\timebankbackend\\backendTimeBank\\obj\\",
+      "projectPath": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
+      "packagesPath": "C:\\Users\\darcy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hairt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\darcy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -4786,7 +4786,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -4852,6 +4852,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.14, 9.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[9.0.14, 9.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[9.0.14, 9.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[9.0.14, 9.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4860,8 +4878,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

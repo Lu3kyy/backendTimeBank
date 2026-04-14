@@ -12,6 +12,7 @@ namespace BlogApiPrev.Models
         public int ReceiverId { get; set; }
         public string? ReceiverUser { get; set; }
         public int ReceiverCredits { get; set; }
+
         public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
     }
 }

@@ -172,8 +172,16 @@ namespace BlogApiPrev.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Credits")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
 
                     b.Property<string>("Hash")
                         .IsRequired()
@@ -199,6 +207,38 @@ namespace BlogApiPrev.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasDiscriminator().HasValue("UserModel");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("backendTimeBank.Models.TransactionModel", b =>
+                {
+                    b.HasBaseType("BlogApiPrev.Models.UserModel");
+
+                    b.Property<int>("ReceiverCredits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiverUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SenderCredits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TransactionId")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("TransactionModel");
                 });
 #pragma warning restore 612, 618
         }

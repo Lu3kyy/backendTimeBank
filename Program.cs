@@ -1,4 +1,5 @@
 using System.Text;
+using backendTimeBank.Services;
 using BlogApiPrev.Context;
 using BlogApiPrev.Models.Configuration;
 using BlogApiPrev.Services;
@@ -45,6 +46,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<CreditServices>();
+
 builder.Services.Configure<BlobStorageOptions>(builder.Configuration.GetSection(BlobStorageOptions.SectionName));
 builder.Services.AddScoped<BlobStorageService>();
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
