@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlogApiPrev.Controllers
 {
     [ApiController]
-    [Route("api/user")]
+    [Route("api/[controller]")]
     [Authorize]
     public class ProfileController : ControllerBase
     {
@@ -98,53 +98,53 @@ namespace BlogApiPrev.Controllers
 
         [HttpPost("profile-picture")]
         [RequestSizeLimit(10_000_000)]
-        public async Task<IActionResult> UploadProfilePicture([FromForm] IFormFile file)
-        {
-            if (!_blobStorageService.IsConfigured())
-            {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, new
-                {
-                    Message = "Blob storage is not configured. Set BlobStorage:ConnectionString and BlobStorage:ContainerName in app settings."
-                });
-            }
+        // public async Task<IActionResult> UploadProfilePicture([FromForm] IFormFile file)
+        // {
+        //     if (!_blobStorageService.IsConfigured())
+        //     {
+        //         return StatusCode(StatusCodes.Status503ServiceUnavailable, new
+        //         {
+        //             Message = "Blob storage is not configured. Set BlobStorage:ConnectionString and BlobStorage:ContainerName in app settings."
+        //         });
+        //     }
 
-            if (file == null || file.Length == 0)
-            {
-                return BadRequest(new { Message = "An image file is required." });
-            }
+        //     if (file == null || file.Length == 0)
+        //     {
+        //         return BadRequest(new { Message = "An image file is required." });
+        //     }
 
-            var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp" };
-            if (!allowedTypes.Contains(file.ContentType))
-            {
-                return BadRequest(new { Message = "Only jpeg, png, or webp images are allowed." });
-            }
+        //     var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp" };
+        //     if (!allowedTypes.Contains(file.ContentType))
+        //     {
+        //         return BadRequest(new { Message = "Only jpeg, png, or webp images are allowed." });
+        //     }
 
-            var userId = GetUserIdFromClaims();
-            if (userId == null)
-            {
-                return Unauthorized(new { Message = "Token is missing user id." });
-            }
+        //     var userId = GetUserIdFromClaims();
+        //     if (userId == null)
+        //     {
+        //         return Unauthorized(new { Message = "Token is missing user id." });
+        //     }
 
-            try
-            {
-                var blobUrl = await _blobStorageService.UploadProfileImageAsync(file, userId.Value);
-                var updatedProfile = await _userServices.SetProfilePictureUrlAsync(userId.Value, blobUrl);
-                if (updatedProfile == null)
-                {
-                    return NotFound(new { Message = "User profile not found." });
-                }
+        //     try
+        //     {
+        //         var blobUrl = await _blobStorageService.UploadProfileImageAsync(file, userId.Value);
+        //         var updatedProfile = await _userServices.SetProfilePictureUrlAsync(userId.Value, blobUrl);
+        //         if (updatedProfile == null)
+        //         {
+        //             return NotFound(new { Message = "User profile not found." });
+        //         }
 
-                return Ok(updatedProfile);
-            }
-            catch (RequestFailedException ex)
-            {
-                return StatusCode(StatusCodes.Status502BadGateway, new
-                {
-                    Message = "Failed to upload image to blob storage.",
-                    Details = ex.Message
-                });
-            }
-        }
+        //         return Ok(updatedProfile);
+        //     }
+        //     catch (RequestFailedException ex)
+        //     {
+        //         return StatusCode(StatusCodes.Status502BadGateway, new
+        //         {
+        //             Message = "Failed to upload image to blob storage.",
+        //             Details = ex.Message
+        //         });
+        //     }
+        // }
 
         private int? GetUserIdFromClaims()
         {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlogApiPrev.Controllers
 {
     [ApiController]
-    [Route("api/user")]
+    [Route("api/[controller]")]
     public class HelpController : ControllerBase
     {
         private readonly UserServices _userServices;
