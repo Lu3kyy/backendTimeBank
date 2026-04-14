@@ -333,3 +333,6 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\ref\BlogApiPre
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\Azure.Storage.Blobs.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\Azure.Storage.Common.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\System.IO.Hashing.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\Azure.Storage.Blobs.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\Azure.Storage.Common.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\System.IO.Hashing.dll

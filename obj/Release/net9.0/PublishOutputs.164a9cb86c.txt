@@ -14,6 +14,8 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publis
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\BlogApiPrev.pdb
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Azure.Core.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Azure.Identity.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Azure.Storage.Blobs.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Azure.Storage.Common.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\Microsoft.Bcl.AsyncInterfaces.dll
@@ -40,6 +42,7 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publis
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.Configuration.ConfigurationManager.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.Drawing.Common.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.IO.Hashing.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.Memory.Data.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.Runtime.Caching.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\System.Security.Cryptography.ProtectedData.dll

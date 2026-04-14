@@ -9,6 +9,7 @@ namespace BlogApiPrev.Context
         public DbSet<HelpPostModel> HelpPosts { get; set; }
         public DbSet<ChatThreadModel> ChatThreads { get; set; }
         public DbSet<ChatMessageModel> ChatMessages { get; set; }
+        public DbSet<TransactionModel> Transactions { get; set; }
 
         public DataContext(DbContextOptions options) : base (options){}
     }
