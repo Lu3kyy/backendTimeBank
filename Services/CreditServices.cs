@@ -30,13 +30,22 @@ namespace backendTimeBank.Services
             UserModel? sender = await GetUserInfoByUserIdAsync(transactionDTO.SenderId);
             int receiverId = await GetUserIdByUsername(transactionDTO.ReceiverUsername);
             UserModel? receiver = await GetUserInfoByUserIdAsync(receiverId);
-           
+            if (sender.Credits == 0)
+            {return false;}
             receiver.Credits += 1;
             sender.Credits -=1;
-
-
+            TransactionModel transaction = new TransactionModel
+            {
+              SenderId = sender.Id,
+              SenderUser = sender.Username,
+              ReceiverId = receiverId,
+              ReceiverUser = receiver.Username,   
+              SenderCredits = sender.Credits,
+              ReceiverCredits = receiver.Credits 
+            };
             _context.Users.Update(receiver);
             _context.Users.Update(sender);
+            _context.Transactions.Add(transaction);
             await _context.SaveChangesAsync();
 
 
