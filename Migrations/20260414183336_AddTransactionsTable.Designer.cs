@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApiPrev.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260312191007_HelpPostsAndDirectChat")]
-    partial class HelpPostsAndDirectChat
+    [Migration("20260414183336_AddTransactionsTable")]
+    partial class AddTransactionsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,44 +130,38 @@ namespace BlogApiPrev.Migrations
                     b.ToTable("HelpPosts");
                 });
 
-            modelBuilder.Entity("BlogApiPrev.Models.HelpRequestModel", b =>
+            modelBuilder.Entity("BlogApiPrev.Models.TransactionModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TransactionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ClosedAtUtc")
-                        .HasColumnType("datetime2");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("InitialMessage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProviderUserId")
+                    b.Property<int>("ReceiverCredits")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequesterUserId")
+                    b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
+                    b.Property<string>("ReceiverUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Subcategory")
-                        .IsRequired()
+                    b.Property<int>("SenderCredits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("TransactionId");
 
-                    b.ToTable("HelpRequests");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("BlogApiPrev.Models.UserModel", b =>
@@ -187,24 +181,6 @@ namespace BlogApiPrev.Migrations
                     b.Property<string>("Hash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HelpCategory")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HelpMode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HelpSubcategory")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDiscoverable")
-                        .HasColumnType("bit");
-
-                    b.Property<double?>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("Longitude")
-                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
