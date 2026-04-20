@@ -342,6 +342,7 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\ref\Blog
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\web.config
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\appsettings.json
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\libman.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\package-lock.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\appsettings.Development.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\appsettings.json
@@ -349,6 +350,7 @@ C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backen
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\BlogApiPrev.runtimeconfig.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\BlogApiPrev.staticwebassets.endpoints.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\package-lock.json
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.staticwebassets.runtime.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.staticwebassets.endpoints.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.exe
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.deps.json
@@ -498,6 +500,8 @@ C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backen
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\scopedcss\bundle\BlogApiPrev.styles.css
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\compressed\6mlo7zom1m-{0}-yq332hliw5-yq332hliw5.gz
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\compressed\urdx920ck6-{0}-zw1ht5h7a0-zw1ht5h7a0.gz
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.development.json
