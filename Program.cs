@@ -114,7 +114,7 @@ app.MapRazorPages()
 
 app.MapControllers();
 
-app.MapHub<PrivateMessageHub>(""); 
+app.MapHub<PrivateMessageHub>("/chatHub"); 
 
 
 app.Run();
