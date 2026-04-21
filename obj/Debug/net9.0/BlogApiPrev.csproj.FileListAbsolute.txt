@@ -168,9 +168,31 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\Azure.Storage.Bl
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\Azure.Storage.Common.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\System.IO.Hashing.dll
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.exe
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Azure.Storage.Blobs.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\web.config
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\appsettings.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\libman.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\package-lock.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\appsettings.Development.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\appsettings.json
@@ -178,6 +200,7 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\BlogApiPrev.runtimeconfig.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\BlogApiPrev.staticwebassets.endpoints.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\publish-clean2\package-lock.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.staticwebassets.runtime.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.staticwebassets.endpoints.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.exe
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.deps.json
@@ -327,6 +350,8 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\rjimswa.
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\scopedcss\bundle\BlogApiPrev.styles.css
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\compressed\lanc81gk63-yq332hliw5.gz
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\compressed\rc5jxq0m8f-zw1ht5h7a0.gz
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\staticwebassets.development.json
@@ -337,28 +362,3 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\refint\B
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\BlogApiPrev.pdb
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\BlogApiPrev.genruntimeconfig.cache
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\ref\BlogApiPrev.dll
-=======
->>>>>>> Stashed changes
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.exe
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Azure.Core.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Azure.Storage.Blobs.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Microsoft.OpenApi.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\libman.json
-C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Debug\net9.0\BlogApiPrev.staticwebassets.runtime.json
-C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\compressed\lanc81gk63-yq332hliw5.gz
-C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Debug\net9.0\compressed\rc5jxq0m8f-zw1ht5h7a0.gz

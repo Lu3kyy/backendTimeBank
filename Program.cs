@@ -102,19 +102,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
-app.UseAuthorization();
-
 app.UseCors("AllowAll");
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapStaticAssets();
 // app.MapHub<ChatHub>("/hub");
 app.MapRazorPages()
    .WithStaticAssets();
-
-app.UseAuthentication();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
