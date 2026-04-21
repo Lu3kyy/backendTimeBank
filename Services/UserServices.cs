@@ -16,6 +16,8 @@ namespace BlogApiPrev.Services
 {
     public class UserServices
     {
+        private const int DirectMessageHelpPostId = 0;
+
         private static readonly string[] AllowedHelpCategories =
         [
             "home",
@@ -597,6 +599,233 @@ namespace BlogApiPrev.Services
             return result;
         }
 
+        public async Task<List<DmInboxItemDTO>> GetDirectMessageInboxAsync(int userId)
+        {
+            var threads = await _dataContext.ChatThreads
+                .AsNoTracking()
+                .Where(thread => thread.HelpPostId == DirectMessageHelpPostId &&
+                    (thread.InitiatorUserId == userId || thread.RecipientUserId == userId))
+                .ToListAsync();
+
+            if (threads.Count == 0)
+            {
+                return [];
+            }
+
+            var threadIds = threads.Select(thread => thread.Id).ToList();
+            var messages = await _dataContext.ChatMessages
+                .AsNoTracking()
+                .Where(message => threadIds.Contains(message.ChatThreadId))
+                .OrderByDescending(message => message.SentAtUtc)
+                .ToListAsync();
+
+            var latestMessageByThreadId = messages
+                .GroupBy(message => message.ChatThreadId)
+                .ToDictionary(group => group.Key, group => group.First());
+
+            var unreadCountByThreadId = messages
+                .GroupBy(message => message.ChatThreadId)
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.Count(message => message.SenderUserId != userId && message.ReadAtUtc == null));
+
+            var participantIds = threads
+                .SelectMany(thread => new[] { thread.InitiatorUserId, thread.RecipientUserId })
+                .Distinct()
+                .ToList();
+
+            var users = await _dataContext.Users
+                .AsNoTracking()
+                .Where(user => participantIds.Contains(user.Id))
+                .ToDictionaryAsync(user => user.Id);
+
+            var inbox = threads.Select(thread =>
+            {
+                var otherUserId = thread.InitiatorUserId == userId ? thread.RecipientUserId : thread.InitiatorUserId;
+                users.TryGetValue(otherUserId, out var otherUser);
+                latestMessageByThreadId.TryGetValue(thread.Id, out var latestMessage);
+
+                var lastMessageSenderUsername = string.Empty;
+                if (latestMessage != null && users.TryGetValue(latestMessage.SenderUserId, out var lastMessageSender))
+                {
+                    lastMessageSenderUsername = lastMessageSender.Username;
+                }
+
+                return new DmInboxItemDTO
+                {
+                    ThreadId = thread.Id,
+                    OtherUserId = otherUserId,
+                    OtherUsername = otherUser?.Username ?? string.Empty,
+                    OtherDisplayName = otherUser == null ? "Unknown" : (string.IsNullOrWhiteSpace(otherUser.Name) ? otherUser.Username : otherUser.Name),
+                    OtherProfilePictureUrl = otherUser?.ProfilePictureUrl,
+                    LastMessagePreview = latestMessage?.Message ?? string.Empty,
+                    LastMessageAtUtc = latestMessage?.SentAtUtc ?? thread.StartedAtUtc,
+                    LastMessageFromUsername = lastMessageSenderUsername,
+                    UnreadCount = unreadCountByThreadId.GetValueOrDefault(thread.Id, 0)
+                };
+            })
+            .OrderByDescending(item => item.LastMessageAtUtc)
+            .ToList();
+
+            return inbox;
+        }
+
+        public async Task<int> GetDirectMessageUnreadCountAsync(int userId)
+        {
+            var threadIds = await _dataContext.ChatThreads
+                .AsNoTracking()
+                .Where(thread => thread.HelpPostId == DirectMessageHelpPostId &&
+                    (thread.InitiatorUserId == userId || thread.RecipientUserId == userId))
+                .Select(thread => thread.Id)
+                .ToListAsync();
+
+            if (threadIds.Count == 0)
+            {
+                return 0;
+            }
+
+            return await _dataContext.ChatMessages
+                .AsNoTracking()
+                .Where(message => threadIds.Contains(message.ChatThreadId) &&
+                    message.SenderUserId != userId &&
+                    message.ReadAtUtc == null)
+                .CountAsync();
+        }
+
+        public async Task<List<DmMessageDTO>?> GetDirectMessageConversationAsync(int currentUserId, string otherUsername)
+        {
+            var otherUser = await _dataContext.Users
+                .AsNoTracking()
+                .SingleOrDefaultAsync(user => user.Username == otherUsername.Trim());
+
+            if (otherUser == null)
+            {
+                return null;
+            }
+
+            var thread = await GetDirectMessageThreadAsync(currentUserId, otherUser.Id);
+            if (thread == null)
+            {
+                return [];
+            }
+
+            var messages = await _dataContext.ChatMessages
+                .AsNoTracking()
+                .Where(message => message.ChatThreadId == thread.Id)
+                .OrderBy(message => message.SentAtUtc)
+                .ToListAsync();
+
+            var participantIds = messages
+                .Select(message => message.SenderUserId)
+                .Append(currentUserId)
+                .Append(otherUser.Id)
+                .Distinct()
+                .ToList();
+
+            var users = await _dataContext.Users
+                .AsNoTracking()
+                .Where(user => participantIds.Contains(user.Id))
+                .ToDictionaryAsync(user => user.Id);
+
+            return messages.Select(message =>
+            {
+                users.TryGetValue(message.SenderUserId, out var sender);
+
+                return new DmMessageDTO
+                {
+                    Id = message.Id,
+                    ChatThreadId = message.ChatThreadId,
+                    SenderUserId = message.SenderUserId,
+                    SenderUsername = sender?.Username ?? "unknown",
+                    SenderDisplayName = sender == null ? "Unknown" : (string.IsNullOrWhiteSpace(sender.Name) ? sender.Username : sender.Name),
+                    Message = message.Message,
+                    SentAtUtc = message.SentAtUtc,
+                    ReadAtUtc = message.ReadAtUtc,
+                    IsMine = message.SenderUserId == currentUserId
+                };
+            }).ToList();
+        }
+
+        public async Task<DmMessageDTO?> SendDirectMessageAsync(int currentUserId, string otherUsername, string message)
+        {
+            var currentUser = await _dataContext.Users
+                .AsNoTracking()
+                .SingleOrDefaultAsync(user => user.Id == currentUserId);
+            var otherUser = await _dataContext.Users
+                .AsNoTracking()
+                .SingleOrDefaultAsync(user => user.Username == otherUsername.Trim());
+
+            if (currentUser == null || otherUser == null || currentUser.Id == otherUser.Id)
+            {
+                return null;
+            }
+
+            var thread = await GetOrCreateDirectMessageThreadAsync(currentUser.Id, otherUser.Id);
+
+            var newMessage = new ChatMessageModel
+            {
+                ChatThreadId = thread.Id,
+                SenderUserId = currentUser.Id,
+                Message = message.Trim(),
+                SentAtUtc = DateTime.UtcNow,
+                ReadAtUtc = null
+            };
+
+            await _dataContext.ChatMessages.AddAsync(newMessage);
+            await _dataContext.SaveChangesAsync();
+
+            return new DmMessageDTO
+            {
+                Id = newMessage.Id,
+                ChatThreadId = newMessage.ChatThreadId,
+                SenderUserId = newMessage.SenderUserId,
+                SenderUsername = currentUser.Username,
+                SenderDisplayName = string.IsNullOrWhiteSpace(currentUser.Name) ? currentUser.Username : currentUser.Name,
+                Message = newMessage.Message,
+                SentAtUtc = newMessage.SentAtUtc,
+                ReadAtUtc = newMessage.ReadAtUtc,
+                IsMine = true
+            };
+        }
+
+        public async Task<int> MarkDirectMessageConversationReadAsync(int currentUserId, string otherUsername)
+        {
+            var otherUser = await _dataContext.Users
+                .AsNoTracking()
+                .SingleOrDefaultAsync(user => user.Username == otherUsername.Trim());
+
+            if (otherUser == null)
+            {
+                return 0;
+            }
+
+            var thread = await GetDirectMessageThreadAsync(currentUserId, otherUser.Id);
+            if (thread == null)
+            {
+                return 0;
+            }
+
+            var unreadMessages = await _dataContext.ChatMessages
+                .Where(message => message.ChatThreadId == thread.Id &&
+                    message.SenderUserId != currentUserId &&
+                    message.ReadAtUtc == null)
+                .ToListAsync();
+
+            if (unreadMessages.Count == 0)
+            {
+                return 0;
+            }
+
+            var readAtUtc = DateTime.UtcNow;
+            foreach (var unreadMessage in unreadMessages)
+            {
+                unreadMessage.ReadAtUtc = readAtUtc;
+            }
+
+            await _dataContext.SaveChangesAsync();
+            return unreadMessages.Count;
+        }
+
         public async Task<List<ChatMessageDTO>?> GetChatMessagesAsync(int userId, int chatId)
         {
             var thread = await _dataContext.ChatThreads.SingleOrDefaultAsync(t => t.Id == chatId);
@@ -733,6 +962,43 @@ namespace BlogApiPrev.Services
                 StartedAtUtc = thread.StartedAtUtc,
                 EndedAtUtc = thread.EndedAtUtc
             };
+        }
+
+        private async Task<ChatThreadModel?> GetDirectMessageThreadAsync(int currentUserId, int otherUserId)
+        {
+            return await _dataContext.ChatThreads
+                .SingleOrDefaultAsync(thread => thread.HelpPostId == DirectMessageHelpPostId &&
+                    ((thread.InitiatorUserId == currentUserId && thread.RecipientUserId == otherUserId) ||
+                     (thread.InitiatorUserId == otherUserId && thread.RecipientUserId == currentUserId)));
+        }
+
+        private async Task<ChatThreadModel> GetOrCreateDirectMessageThreadAsync(int currentUserId, int otherUserId)
+        {
+            var thread = await GetDirectMessageThreadAsync(currentUserId, otherUserId);
+            if (thread != null)
+            {
+                if (thread.Status == "Closed")
+                {
+                    thread.Status = "Active";
+                    thread.EndedAtUtc = null;
+                    await _dataContext.SaveChangesAsync();
+                }
+
+                return thread;
+            }
+
+            thread = new ChatThreadModel
+            {
+                HelpPostId = DirectMessageHelpPostId,
+                InitiatorUserId = currentUserId,
+                RecipientUserId = otherUserId,
+                Status = "Active",
+                StartedAtUtc = DateTime.UtcNow
+            };
+
+            await _dataContext.ChatThreads.AddAsync(thread);
+            await _dataContext.SaveChangesAsync();
+            return thread;
         }
 
         private static double DegreesToRadians(double degrees) => degrees * Math.PI / 180.0;

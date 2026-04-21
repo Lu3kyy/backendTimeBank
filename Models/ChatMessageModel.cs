@@ -7,5 +7,6 @@ namespace BlogApiPrev.Models
         public int SenderUserId { get; set; }
         public string Message { get; set; } = string.Empty;
         public DateTime SentAtUtc { get; set; } = DateTime.UtcNow;
+        public DateTime? ReadAtUtc { get; set; }
     }
 }

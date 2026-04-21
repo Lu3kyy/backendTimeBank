@@ -65,7 +65,8 @@ namespace SignalR.Hubs
                 ChatThreadId = thread.Id,
                 SenderUserId = sender.Id,
                 Message = trimmedMessage,
-                SentAtUtc = DateTime.UtcNow
+                SentAtUtc = DateTime.UtcNow,
+                ReadAtUtc = null
             };
 
             await _dataContext.ChatMessages.AddAsync(chatMessage);
@@ -77,10 +78,11 @@ namespace SignalR.Hubs
                 From = normalizedFromUsername,
                 To = normalizedToUsername,
                 Message = trimmedMessage,
-                SentAtUtc = chatMessage.SentAtUtc
+                SentAtUtc = chatMessage.SentAtUtc,
+                ReadAtUtc = chatMessage.ReadAtUtc
             };
 
-            if (_userConnections.TryGetValue(toUsername, out var toConnectionId))
+            if (_userConnections.TryGetValue(normalizedToUsername, out var toConnectionId))
             {
                 await Clients.Client(toConnectionId).SendAsync("ReceivePrivateMessage", payload);
             }
@@ -126,6 +128,23 @@ namespace SignalR.Hubs
                 return [];
             }
 
+            var unreadMessages = await _dataContext.ChatMessages
+                .Where(message => message.ChatThreadId == thread.Id &&
+                    message.SenderUserId != currentUser.Id &&
+                    message.ReadAtUtc == null)
+                .ToListAsync();
+
+            if (unreadMessages.Count > 0)
+            {
+                var readAtUtc = DateTime.UtcNow;
+                foreach (var unreadMessage in unreadMessages)
+                {
+                    unreadMessage.ReadAtUtc = readAtUtc;
+                }
+
+                await _dataContext.SaveChangesAsync();
+            }
+
             var messages = await _dataContext.ChatMessages
                 .AsNoTracking()
                 .Where(message => message.ChatThreadId == thread.Id)
@@ -138,7 +157,8 @@ namespace SignalR.Hubs
                 From = message.SenderUserId == currentUser.Id ? currentUsername : normalizedWithUsername,
                 To = message.SenderUserId == currentUser.Id ? normalizedWithUsername : currentUsername,
                 Message = message.Message,
-                SentAtUtc = message.SentAtUtc
+                SentAtUtc = message.SentAtUtc,
+                ReadAtUtc = message.ReadAtUtc
             }).ToList();
         }
 
@@ -189,5 +209,6 @@ namespace SignalR.Hubs
         public string To { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public DateTime SentAtUtc { get; set; }
+        public DateTime? ReadAtUtc { get; set; }
     }
 }
