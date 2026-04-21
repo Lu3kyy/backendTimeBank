@@ -510,3 +510,7 @@ C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backen
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Release\net9.0\BlogApiPrev.pdb
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Release\net9.0\BlogApiPrev.genruntimeconfig.cache
 C:\Users\darcy\OneDrive\Documents\Academy\level4\timebank\TimeBankBackend\backendTimeBank\obj\Release\net9.0\ref\BlogApiPrev.dll
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\libman.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\BlogApiPrev.staticwebassets.runtime.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\compressed\lanc81gk63-yq332hliw5.gz
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\compressed\rc5jxq0m8f-zw1ht5h7a0.gz

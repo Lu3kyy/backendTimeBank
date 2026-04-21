@@ -28,9 +28,9 @@ namespace BlogApiPrev.Controllers
         [Authorize]
         public async Task<IActionResult> CreateHelpPost([FromBody] HelpPostCreateDTO post)
         {
-            if (string.IsNullOrWhiteSpace(post.Category) || string.IsNullOrWhiteSpace(post.Subcategory) || string.IsNullOrWhiteSpace(post.Title) || string.IsNullOrWhiteSpace(post.Description))
+            if (string.IsNullOrWhiteSpace(post.Category) || string.IsNullOrWhiteSpace(post.PostType) || string.IsNullOrWhiteSpace(post.Title) || string.IsNullOrWhiteSpace(post.Description))
             {
-                return BadRequest(new { Message = "Category, subcategory, title, and description are required." });
+                return BadRequest(new { Message = "Category, post type, title, and description are required." });
             }
 
             var userId = GetUserIdFromClaims();
@@ -52,12 +52,12 @@ namespace BlogApiPrev.Controllers
         [Authorize]
         public async Task<IActionResult> GetHelpPosts(
             [FromQuery] string? category = null,
-            [FromQuery] string? subcategory = null,
+            [FromQuery] string? postType = null,
             [FromQuery] double? latitude = null,
             [FromQuery] double? longitude = null,
             [FromQuery] double? radiusKm = null)
         {
-            var posts = await _userServices.GetHelpPostsAsync(category, subcategory, latitude, longitude, radiusKm);
+            var posts = await _userServices.GetHelpPostsAsync(category, postType, latitude, longitude, radiusKm);
             return Ok(posts);
         }
 

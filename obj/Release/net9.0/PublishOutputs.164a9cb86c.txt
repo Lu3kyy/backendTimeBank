@@ -2,6 +2,7 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publis
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\publish-clean2\web.config
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\appsettings.Development.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\appsettings.json
+C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\libman.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\package-lock.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\publish-clean2\appsettings.Development.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\publish\publish-clean2\appsettings.json

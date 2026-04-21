@@ -114,6 +114,10 @@ namespace BlogApiPrev.Migrations
                     b.Property<double?>("Longitude")
                         .HasColumnType("float");
 
+                    b.Property<string>("PostType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Subcategory")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

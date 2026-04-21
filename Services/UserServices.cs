@@ -16,6 +16,19 @@ namespace BlogApiPrev.Services
 {
     public class UserServices
     {
+        private static readonly string[] AllowedHelpCategories =
+        [
+            "home",
+            "learning",
+            "garden",
+            "pet",
+            "creative",
+            "fitness",
+            "other"
+        ];
+
+        private static readonly string[] AllowedHelpPostTypes = ["offer", "request"];
+
         private readonly DataContext _dataContext;
         private readonly IConfiguration _config;
 
@@ -334,39 +347,9 @@ namespace BlogApiPrev.Services
 
         public List<HelpCategoryDTO> GetHelpCategories()
         {
-            return
-            [
-                new HelpCategoryDTO
-                {
-                    Category = "Home Help",
-                    Subcategories = ["Home Cleaning", "Home Selling", "Minor Repairs", "Moving Help"]
-                },
-                new HelpCategoryDTO
-                {
-                    Category = "Learning Help",
-                    Subcategories = ["Math Tutoring", "Reading Support", "Homework Help", "Language Practice"]
-                },
-                new HelpCategoryDTO
-                {
-                    Category = "Gardening Help",
-                    Subcategories = ["Weeding", "Planting", "Lawn Care", "Yard Cleanup"]
-                },
-                new HelpCategoryDTO
-                {
-                    Category = "Pet Care Help",
-                    Subcategories = ["Dog Walking", "Pet Sitting", "Feeding Help", "Vet Transport"]
-                },
-                new HelpCategoryDTO
-                {
-                    Category = "Creative Help",
-                    Subcategories = ["Graphic Design", "Photography", "Painting Help", "Craft Projects"]
-                },
-                new HelpCategoryDTO
-                {
-                    Category = "Fitness Help",
-                    Subcategories = ["Workout Partner", "Personal Training", "Running Coach", "Stretching Support"]
-                }
-            ];
+            return AllowedHelpCategories
+                .Select(category => new HelpCategoryDTO { Category = category })
+                .ToList();
         }
 
         public async Task<HelpPostDTO?> CreateHelpPostAsync(int userId, HelpPostCreateDTO post)
@@ -377,11 +360,19 @@ namespace BlogApiPrev.Services
                 return null;
             }
 
+            var normalizedCategory = NormalizeHelpCategory(post.Category);
+            var normalizedPostType = NormalizeHelpPostType(post.PostType);
+            if (normalizedCategory == null || normalizedPostType == null)
+            {
+                return null;
+            }
+
             var newPost = new HelpPostModel
             {
                 CreatedByUserId = userId,
-                Category = post.Category.Trim(),
-                Subcategory = post.Subcategory.Trim(),
+                Category = normalizedCategory,
+                PostType = normalizedPostType,
+                Subcategory = string.Empty,
                 Title = post.Title.Trim(),
                 Description = post.Description.Trim(),
                 Latitude = post.Latitude,
@@ -400,7 +391,7 @@ namespace BlogApiPrev.Services
                 CreatorName = string.IsNullOrWhiteSpace(user.Name) ? user.Username : user.Name,
                 CreatorProfilePictureUrl = user.ProfilePictureUrl,
                 Category = newPost.Category,
-                Subcategory = newPost.Subcategory,
+                PostType = newPost.PostType,
                 Title = newPost.Title,
                 Description = newPost.Description,
                 DistanceKm = null,
@@ -409,20 +400,30 @@ namespace BlogApiPrev.Services
             };
         }
 
-        public async Task<List<HelpPostDTO>> GetHelpPostsAsync(string? category, string? subcategory, double? latitude, double? longitude, double? radiusKm)
+        public async Task<List<HelpPostDTO>> GetHelpPostsAsync(string? category, string? postType, double? latitude, double? longitude, double? radiusKm)
         {
             IQueryable<HelpPostModel> query = _dataContext.HelpPosts.Where(p => p.IsOpen);
 
             if (!string.IsNullOrWhiteSpace(category))
             {
-                var normalizedCategory = category.Trim().ToLower();
-                query = query.Where(p => p.Category.ToLower() == normalizedCategory);
+                var normalizedCategory = NormalizeHelpCategory(category);
+                if (normalizedCategory == null)
+                {
+                    return [];
+                }
+
+                query = query.Where(p => p.Category == normalizedCategory);
             }
 
-            if (!string.IsNullOrWhiteSpace(subcategory))
+            if (!string.IsNullOrWhiteSpace(postType))
             {
-                var normalizedSubcategory = subcategory.Trim().ToLower();
-                query = query.Where(p => p.Subcategory.ToLower() == normalizedSubcategory);
+                var normalizedPostType = NormalizeHelpPostType(postType);
+                if (normalizedPostType == null)
+                {
+                    return [];
+                }
+
+                query = query.Where(p => p.PostType == normalizedPostType);
             }
 
             var posts = await query.OrderByDescending(p => p.CreatedAtUtc).ToListAsync();
@@ -446,7 +447,7 @@ namespace BlogApiPrev.Services
                     CreatorName = creator == null ? "Unknown" : (string.IsNullOrWhiteSpace(creator.Name) ? creator.Username : creator.Name),
                     CreatorProfilePictureUrl = creator?.ProfilePictureUrl,
                     Category = p.Category,
-                    Subcategory = p.Subcategory,
+                    PostType = p.PostType,
                     Title = p.Title,
                     Description = p.Description,
                     DistanceKm = distance,
@@ -485,13 +486,25 @@ namespace BlogApiPrev.Services
                 CreatorName = creatorName,
                 CreatorProfilePictureUrl = creatorProfilePictureUrl,
                 Category = p.Category,
-                Subcategory = p.Subcategory,
+                PostType = p.PostType,
                 Title = p.Title,
                 Description = p.Description,
                 DistanceKm = null,
                 IsOpen = p.IsOpen,
                 CreatedAtUtc = p.CreatedAtUtc
             }).ToList();
+        }
+
+        private static string? NormalizeHelpCategory(string category)
+        {
+            var normalizedCategory = category.Trim().ToLowerInvariant();
+            return AllowedHelpCategories.Contains(normalizedCategory) ? normalizedCategory : null;
+        }
+
+        private static string? NormalizeHelpPostType(string postType)
+        {
+            var normalizedPostType = postType.Trim().ToLowerInvariant();
+            return AllowedHelpPostTypes.Contains(normalizedPostType) ? normalizedPostType : null;
         }
 
         public async Task<bool> CloseHelpPostAsync(int userId, int postId)
