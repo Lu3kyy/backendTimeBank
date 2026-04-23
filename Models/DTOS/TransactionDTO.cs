@@ -11,5 +11,6 @@ namespace backendTimeBank.Models.DTOS
         public int Id { get; set; }
         public int SenderId {get; set;}
         public string? ReceiverUsername {get; set;}
+        public int Amount {get; set; }
     }
 }

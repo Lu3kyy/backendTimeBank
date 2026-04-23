@@ -26,31 +26,44 @@ namespace backendTimeBank.Services
 
 
         public async Task<bool> Transfer(TransactionDTO transactionDTO)
-        {
-            UserModel? sender = await GetUserInfoByUserIdAsync(transactionDTO.SenderId);
-            int receiverId = await GetUserIdByUsername(transactionDTO.ReceiverUsername);
-            UserModel? receiver = await GetUserInfoByUserIdAsync(receiverId);
-            if (sender.Credits == 0)
-            {return false;}
-            receiver.Credits += 1;
-            sender.Credits -=1;
-            TransactionModel transaction = new TransactionModel
-            {
-              SenderId = sender.Id,
-              SenderUser = sender.Username,
-              ReceiverId = receiverId,
-              ReceiverUser = receiver.Username,   
-              SenderCredits = sender.Credits,
-              ReceiverCredits = receiver.Credits 
-            };
-            _context.Users.Update(receiver);
-            _context.Users.Update(sender);
-            _context.Transactions.Add(transaction);
-            await _context.SaveChangesAsync();
+{
+    UserModel? sender = await GetUserInfoByUserIdAsync(transactionDTO.SenderId);
+    int receiverId = await GetUserIdByUsername(transactionDTO.ReceiverUsername);
+    UserModel? receiver = await GetUserInfoByUserIdAsync(receiverId);
 
+    if (sender == null || receiver == null)
+        return false;
 
-            return true;
-        }
+    int amount = transactionDTO.Amount;
+
+    // Validate amount
+    if (amount <= 0)
+        return false;
+
+    if (sender.Credits < amount)
+        return false;
+
+    sender.Credits -= amount;
+    receiver.Credits += amount;
+
+    TransactionModel transaction = new TransactionModel
+    {
+        SenderId = sender.Id,
+        SenderUser = sender.Username,
+        ReceiverId = receiverId,
+        ReceiverUser = receiver.Username,
+        SenderCredits = sender.Credits,
+        ReceiverCredits = receiver.Credits
+    };
+
+    _context.Users.Update(sender);
+    _context.Users.Update(receiver);
+    _context.Transactions.Add(transaction);
+
+    await _context.SaveChangesAsync();
+
+    return true;
+}
 
 
 
