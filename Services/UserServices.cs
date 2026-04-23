@@ -923,7 +923,8 @@ namespace BlogApiPrev.Services
                 Username = user.Username,
                 Name = user.Name,
                 ProfilePictureUrl = user.ProfilePictureUrl,
-                Description = user.Description
+                Description = user.Description,
+                Credits = user.Credits
             };
         }
 
