@@ -36,6 +36,13 @@ namespace backendTimeBank.Controllers
             var transactions = await _services.GetTransactions(userId);
             return Ok(transactions);
         }
+
+        [HttpGet("GetUserIdByUsername")]
+        public async Task<ActionResult<int>> GetUserIdByUsername(string username)
+        {
+            var userId = await _services.GetUserIdByUsername(username);
+            return Ok(userId);
+        }
     }
 }
 
