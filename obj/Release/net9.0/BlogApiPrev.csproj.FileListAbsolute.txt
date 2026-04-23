@@ -514,3 +514,7 @@ C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\libman
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\bin\Release\net9.0\BlogApiPrev.staticwebassets.runtime.json
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\compressed\lanc81gk63-yq332hliw5.gz
 C:\Users\hairt\Desktop\timebankbackend\backendTimeBank\obj\Release\net9.0\compressed\rc5jxq0m8f-zw1ht5h7a0.gz
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\libman.json
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\BlogApiPrev.staticwebassets.runtime.json
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\compressed\lanc81gk63-yq332hliw5.gz
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Release\net9.0\compressed\rc5jxq0m8f-zw1ht5h7a0.gz

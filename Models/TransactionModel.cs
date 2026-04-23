@@ -6,6 +6,7 @@ namespace BlogApiPrev.Models
     {
         [Key]
         public int TransactionId { get; set; }
+        public int Amount { get; set; }
         public int SenderId { get; set; }
         public string? SenderUser { get; set; }
         public int SenderCredits { get; set; }

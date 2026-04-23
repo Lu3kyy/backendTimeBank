@@ -48,6 +48,7 @@ namespace backendTimeBank.Services
 
     TransactionModel transaction = new TransactionModel
     {
+        Amount = amount,
         SenderId = sender.Id,
         SenderUser = sender.Username,
         ReceiverId = receiverId,

@@ -2,6 +2,7 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\BlogAp
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\publish-clean2\web.config
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\appsettings.Development.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\appsettings.json
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\libman.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\package-lock.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\publish-clean2\appsettings.Development.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\publish-clean2\appsettings.json
@@ -14,6 +15,8 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\BlogAp
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\BlogApiPrev.pdb
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Azure.Core.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Azure.Identity.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Azure.Storage.Blobs.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Azure.Storage.Common.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\Microsoft.Bcl.AsyncInterfaces.dll
@@ -40,6 +43,7 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.Configuration.ConfigurationManager.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.Drawing.Common.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.IO.Hashing.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.Memory.Data.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.Runtime.Caching.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Release\net9.0\publish\System.Security.Cryptography.ProtectedData.dll
