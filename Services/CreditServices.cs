@@ -48,7 +48,6 @@ namespace backendTimeBank.Services
 
     TransactionModel transaction = new TransactionModel
     {
-        Amount = amount,
         SenderId = sender.Id,
         SenderUser = sender.Username,
         ReceiverId = receiverId,
@@ -90,6 +89,9 @@ namespace backendTimeBank.Services
 
         public async Task<UserModel?> GetUserInfoByUserIdAsync(int userId) => await _context.Users.SingleOrDefaultAsync(user => user.Id == userId);
 
-
+        public async Task<bool> DoesUserExist(string username)
+        {
+            return await _context.Users.AnyAsync(user => user.Username == username);
+        }
     }
 }
