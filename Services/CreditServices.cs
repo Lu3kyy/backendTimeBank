@@ -36,7 +36,6 @@ namespace backendTimeBank.Services
 
     int amount = transactionDTO.Amount;
 
-    // Validate amount
     if (amount <= 0)
         return false;
 
@@ -92,6 +91,11 @@ namespace backendTimeBank.Services
         public async Task<bool> DoesUserExist(string username)
         {
             return await _context.Users.AnyAsync(user => user.Username == username);
+        }
+
+        public async Task<int> GetUserCredits(string username) 
+        {var data = await _context.Users.SingleOrDefaultAsync(user => user.Username == username);
+        return data.Credits;
         }
     }
 }
