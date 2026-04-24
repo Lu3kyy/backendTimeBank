@@ -46,11 +46,18 @@ namespace backendTimeBank.Controllers
 
         [HttpGet("DoesUserExist/{username}")]
 
-        
         public async Task<ActionResult<bool>> DoesUserExist(string username)
         {
             var existence = await _services.DoesUserExist(username);
             return Ok(existence);
+        }
+
+        [HttpGet("GetUserCredits/{username}")]
+
+        public async Task<ActionResult<int>> GetUserCredits(string username)
+        {
+            var credits = await _services.GetUserCredits(username);
+            return Ok(credits);
         }
 
     }
