@@ -37,7 +37,7 @@ namespace backendTimeBank.Controllers
             return Ok(transactions);
         }
 
-        [HttpGet("GetUserIdByUsername")]
+        [HttpGet("GetUserIdByUsername/{username}")]
         public async Task<ActionResult<int>> GetUserIdByUsername(string username)
         {
             var userId = await _services.GetUserIdByUsername(username);
@@ -45,6 +45,8 @@ namespace backendTimeBank.Controllers
         }
 
         [HttpGet("DoesUserExist/{username}")]
+
+        
         public async Task<ActionResult<bool>> DoesUserExist(string username)
         {
             var existence = await _services.DoesUserExist(username);
