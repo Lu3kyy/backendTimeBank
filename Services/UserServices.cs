@@ -374,7 +374,6 @@ namespace BlogApiPrev.Services
                 CreatedByUserId = userId,
                 Category = normalizedCategory,
                 PostType = normalizedPostType,
-                Subcategory = string.Empty,
                 Title = post.Title.Trim(),
                 Description = post.Description.Trim(),
                 Latitude = post.Latitude,
@@ -386,20 +385,7 @@ namespace BlogApiPrev.Services
             await _dataContext.HelpPosts.AddAsync(newPost);
             await _dataContext.SaveChangesAsync();
 
-            return new HelpPostDTO
-            {
-                Id = newPost.Id,
-                CreatedByUserId = newPost.CreatedByUserId,
-                CreatorName = string.IsNullOrWhiteSpace(user.Name) ? user.Username : user.Name,
-                CreatorProfilePictureUrl = user.ProfilePictureUrl,
-                Category = newPost.Category,
-                PostType = newPost.PostType,
-                Title = newPost.Title,
-                Description = newPost.Description,
-                DistanceKm = null,
-                IsOpen = newPost.IsOpen,
-                CreatedAtUtc = newPost.CreatedAtUtc
-            };
+            return MapPostToDTO(newPost, user);
         }
 
         public async Task<List<HelpPostDTO>> GetHelpPostsAsync(string? category, string? postType, double? latitude, double? longitude, double? radiusKm)
@@ -442,20 +428,9 @@ namespace BlogApiPrev.Services
                     ? CalculateDistanceKm(latitude.Value, longitude.Value, p.Latitude.Value, p.Longitude.Value)
                     : null;
 
-                return new HelpPostDTO
-                {
-                    Id = p.Id,
-                    CreatedByUserId = p.CreatedByUserId,
-                    CreatorName = creator == null ? "Unknown" : (string.IsNullOrWhiteSpace(creator.Name) ? creator.Username : creator.Name),
-                    CreatorProfilePictureUrl = creator?.ProfilePictureUrl,
-                    Category = p.Category,
-                    PostType = p.PostType,
-                    Title = p.Title,
-                    Description = p.Description,
-                    DistanceKm = distance,
-                    IsOpen = p.IsOpen,
-                    CreatedAtUtc = p.CreatedAtUtc
-                };
+                var dto = MapPostToDTO(p, creator);
+                dto.DistanceKm = distance;
+                return dto;
             }).ToList();
 
             if (radiusKm.HasValue)
@@ -478,23 +453,93 @@ namespace BlogApiPrev.Services
                 .ToListAsync();
 
             var user = await _dataContext.Users.SingleOrDefaultAsync(u => u.Id == userId);
-            var creatorName = user == null ? "Unknown" : (string.IsNullOrWhiteSpace(user.Name) ? user.Username : user.Name);
-            var creatorProfilePictureUrl = user?.ProfilePictureUrl;
-
-            return posts.Select(p => new HelpPostDTO
+            if (user == null)
             {
-                Id = p.Id,
-                CreatedByUserId = p.CreatedByUserId,
-                CreatorName = creatorName,
-                CreatorProfilePictureUrl = creatorProfilePictureUrl,
-                Category = p.Category,
-                PostType = p.PostType,
-                Title = p.Title,
-                Description = p.Description,
-                DistanceKm = null,
-                IsOpen = p.IsOpen,
-                CreatedAtUtc = p.CreatedAtUtc
-            }).ToList();
+                return [];
+            }
+
+            return posts.Select(p => MapPostToDTO(p, user)).ToList();
+        }
+
+        public async Task<HelpPostDTO?> GetHelpPostByIdAsync(int postId, int? userId = null)
+        {
+            var post = await _dataContext.HelpPosts.SingleOrDefaultAsync(p => p.Id == postId);
+            if (post == null)
+            {
+                return null;
+            }
+
+            var creator = await _dataContext.Users.SingleOrDefaultAsync(u => u.Id == post.CreatedByUserId);
+            return MapPostToDTO(post, creator);
+        }
+
+        public async Task<HelpPostDTO?> UpdateHelpPostAsync(int userId, int postId, HelpPostUpdateDTO updates)
+        {
+            var post = await _dataContext.HelpPosts.SingleOrDefaultAsync(p => p.Id == postId);
+            if (post == null || post.CreatedByUserId != userId)
+            {
+                return null;
+            }
+
+            if (!string.IsNullOrWhiteSpace(updates.Title))
+            {
+                post.Title = updates.Title.Trim();
+            }
+
+            if (!string.IsNullOrWhiteSpace(updates.Description))
+            {
+                post.Description = updates.Description.Trim();
+            }
+
+            if (updates.Latitude.HasValue)
+            {
+                post.Latitude = updates.Latitude;
+            }
+
+            if (updates.Longitude.HasValue)
+            {
+                post.Longitude = updates.Longitude;
+            }
+
+            await _dataContext.SaveChangesAsync();
+
+            var creator = await _dataContext.Users.SingleOrDefaultAsync(u => u.Id == post.CreatedByUserId);
+            return MapPostToDTO(post, creator);
+        }
+
+        public async Task<bool> DeleteHelpPostAsync(int userId, int postId)
+        {
+            var post = await _dataContext.HelpPosts.SingleOrDefaultAsync(p => p.Id == postId);
+            if (post == null || post.CreatedByUserId != userId)
+            {
+                return false;
+            }
+
+            _dataContext.HelpPosts.Remove(post);
+            await _dataContext.SaveChangesAsync();
+            return true;
+        }
+
+        private static HelpPostDTO MapPostToDTO(HelpPostModel post, UserModel? creator)
+        {
+            return new HelpPostDTO
+            {
+                Id = post.Id,
+                CreatedByUserId = post.CreatedByUserId,
+                CreatorUsername = creator?.Username ?? "Unknown",
+                CreatorName = creator?.Name,
+                CreatorDescription = creator?.Description,
+                CreatorProfilePictureUrl = creator?.ProfilePictureUrl,
+                CreatorCredits = creator?.Credits ?? 0,
+                Category = post.Category,
+                PostType = post.PostType,
+                Title = post.Title,
+                Description = post.Description,
+                Latitude = post.Latitude,
+                Longitude = post.Longitude,
+                IsOpen = post.IsOpen,
+                CreatedAtUtc = post.CreatedAtUtc
+            };
         }
 
         private static string? NormalizeHelpCategory(string category)

@@ -75,6 +75,57 @@ namespace BlogApiPrev.Controllers
             return Ok(posts);
         }
 
+        [HttpGet("help-posts/{postId}")]
+        [Authorize]
+        public async Task<IActionResult> GetHelpPost(int postId)
+        {
+            var post = await _userServices.GetHelpPostByIdAsync(postId);
+            if (post == null)
+            {
+                return NotFound(new { Message = "Help post not found." });
+            }
+
+            return Ok(post);
+        }
+
+        [HttpPut("help-posts/{postId}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateHelpPost(int postId, [FromBody] HelpPostUpdateDTO updates)
+        {
+            var userId = GetUserIdFromClaims();
+            if (userId == null)
+            {
+                return Unauthorized(new { Message = "Token is missing user id." });
+            }
+
+            var updated = await _userServices.UpdateHelpPostAsync(userId.Value, postId, updates);
+            if (updated == null)
+            {
+                return NotFound(new { Message = "Help post not found or not allowed." });
+            }
+
+            return Ok(updated);
+        }
+
+        [HttpDelete("help-posts/{postId}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteHelpPost(int postId)
+        {
+            var userId = GetUserIdFromClaims();
+            if (userId == null)
+            {
+                return Unauthorized(new { Message = "Token is missing user id." });
+            }
+
+            var success = await _userServices.DeleteHelpPostAsync(userId.Value, postId);
+            if (!success)
+            {
+                return NotFound(new { Message = "Help post not found or not allowed." });
+            }
+
+            return Ok(new { Success = true, Message = "Help post deleted." });
+        }
+
         [HttpPost("help-posts/{postId}/close")]
         [Authorize]
         public async Task<IActionResult> CloseHelpPost(int postId)
