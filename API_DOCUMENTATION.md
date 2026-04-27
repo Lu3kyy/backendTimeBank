@@ -1,4 +1,4 @@
-## Help Post System - Frontend Integration Guide
+## Help Post System
 
 ### Overview
 The post system allows users to create, view, edit, and delete help posts in various categories. Users can request help or offer help, and then connect with other users via direct messaging.

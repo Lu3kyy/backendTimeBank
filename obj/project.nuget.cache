@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1BW6gOqy06E=",
+  "dgSpecHash": "NCneRl0AWOE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
+  "projectFilePath": "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mommy\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\mommy\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

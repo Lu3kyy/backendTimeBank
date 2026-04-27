@@ -385,7 +385,9 @@ namespace BlogApiPrev.Services
             await _dataContext.HelpPosts.AddAsync(newPost);
             await _dataContext.SaveChangesAsync();
 
-            return MapPostToDTO(newPost, user);
+            // Reload creator in case SaveChanges mutated state
+            var savedUser = await _dataContext.Users.SingleOrDefaultAsync(u => u.Id == userId) ?? user;
+            return MapPostToDTO(newPost, savedUser);
         }
 
         public async Task<List<HelpPostDTO>> GetHelpPostsAsync(string? category, string? postType, double? latitude, double? longitude, double? radiusKm)

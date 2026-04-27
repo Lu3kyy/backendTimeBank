@@ -11,10 +11,12 @@ namespace BlogApiPrev.Controllers
     public class HelpController : ControllerBase
     {
         private readonly UserServices _userServices;
+        private readonly ILogger<HelpController> _logger;
 
-        public HelpController(UserServices userServices)
+        public HelpController(UserServices userServices, ILogger<HelpController> logger)
         {
             _userServices = userServices;
+            _logger = logger;
         }
 
         [HttpGet("help-categories")]
@@ -28,6 +30,8 @@ namespace BlogApiPrev.Controllers
         [Authorize]
         public async Task<IActionResult> CreateHelpPost([FromBody] HelpPostCreateDTO post)
         {
+            var traceId = Request.Headers.TryGetValue("x-proxy-trace-id", out var tid) ? tid.ToString() : "(none)";
+
             if (string.IsNullOrWhiteSpace(post.Category) || string.IsNullOrWhiteSpace(post.PostType) || string.IsNullOrWhiteSpace(post.Title) || string.IsNullOrWhiteSpace(post.Description))
             {
                 return BadRequest(new { Message = "Category, post type, title, and description are required." });
@@ -36,16 +40,28 @@ namespace BlogApiPrev.Controllers
             var userId = GetUserIdFromClaims();
             if (userId == null)
             {
+                _logger.LogWarning("[trace:{TraceId}] CreateHelpPost: auth claim missing. Claims: {Claims}",
+                    traceId, string.Join(", ", User.Claims.Select(c => $"{c.Type}={c.Value}")));
                 return Unauthorized(new { Message = "Token is missing user id." });
             }
 
-            var created = await _userServices.CreateHelpPostAsync(userId.Value, post);
-            if (created == null)
+            try
             {
-                return BadRequest(new { Message = "Unable to create help post." });
-            }
+                var created = await _userServices.CreateHelpPostAsync(userId.Value, post);
+                if (created == null)
+                {
+                    _logger.LogWarning("[trace:{TraceId}] CreateHelpPost: service returned null for userId={UserId} category={Category} postType={PostType}",
+                        traceId, userId.Value, post.Category, post.PostType);
+                    return BadRequest(new { Message = "Invalid category or post type." });
+                }
 
-            return Ok(created);
+                return Ok(created);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "[trace:{TraceId}] CreateHelpPost threw for userId={UserId}", traceId, userId.Value);
+                return StatusCode(500, new { Message = "An unexpected error occurred creating the help post.", TraceId = traceId });
+            }
         }
 
         [HttpGet("help-posts")]

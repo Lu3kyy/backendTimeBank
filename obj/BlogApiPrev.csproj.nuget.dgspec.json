@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj": {}
+    "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj": {
+    "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
+        "projectUniqueName": "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
         "projectName": "BlogApiPrev",
-        "projectPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
+        "projectPath": "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
         "packagesPath": "C:\\Users\\mommy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\obj\\",
+        "outputPath": "c:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mommy\\AppData\\Roaming\\NuGet\\NuGet.Config"
