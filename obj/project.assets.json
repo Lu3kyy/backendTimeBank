@@ -4750,19 +4750,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\darcy\\.nuget\\packages\\": {}
+    "C:\\Users\\mommy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
+      "projectUniqueName": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
       "projectName": "BlogApiPrev",
-      "projectPath": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\BlogApiPrev.csproj",
-      "packagesPath": "C:\\Users\\darcy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\darcy\\OneDrive\\Documents\\Academy\\level4\\timebank\\TimeBankBackend\\backendTimeBank\\obj\\",
+      "projectPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\BlogApiPrev.csproj",
+      "packagesPath": "C:\\Users\\mommy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mommy\\Desktop\\blogAPIPREV\\BlogApiPrev\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\darcy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mommy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -4786,7 +4786,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -4852,24 +4852,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.14, 9.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[9.0.14, 9.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[9.0.14, 9.0.14]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[9.0.14, 9.0.14]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4878,7 +4860,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
