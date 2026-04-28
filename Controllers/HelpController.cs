@@ -12,11 +12,13 @@ namespace BlogApiPrev.Controllers
     {
         private readonly UserServices _userServices;
         private readonly ILogger<HelpController> _logger;
+        private readonly IWebHostEnvironment _environment;
 
-        public HelpController(UserServices userServices, ILogger<HelpController> logger)
+        public HelpController(UserServices userServices, ILogger<HelpController> logger, IWebHostEnvironment environment)
         {
             _userServices = userServices;
             _logger = logger;
+            _environment = environment;
         }
 
         [HttpGet("help-categories")]
@@ -60,6 +62,19 @@ namespace BlogApiPrev.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "[trace:{TraceId}] CreateHelpPost threw for userId={UserId}", traceId, userId.Value);
+
+                if (_environment.IsDevelopment())
+                {
+                    return StatusCode(500, new
+                    {
+                        Message = "An unexpected error occurred creating the help post.",
+                        TraceId = traceId,
+                        ErrorType = ex.GetType().FullName,
+                        Error = ex.Message,
+                        InnerError = ex.InnerException?.Message
+                    });
+                }
+
                 return StatusCode(500, new { Message = "An unexpected error occurred creating the help post.", TraceId = traceId });
             }
         }
