@@ -31,7 +31,7 @@ namespace BlogApiPrev.Services
             var containerName = _options.ContainerName.Trim();
             var blobServiceClient = new BlobServiceClient(connectionString);
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
-            await containerClient.CreateIfNotExistsAsync(PublicAccessType.Blob);
+            await containerClient.CreateIfNotExistsAsync();
 
             var extension = Path.GetExtension(file.FileName);
             var safeExtension = string.IsNullOrWhiteSpace(extension) ? ".bin" : extension.ToLowerInvariant();
@@ -39,7 +39,15 @@ namespace BlogApiPrev.Services
             var blobClient = containerClient.GetBlobClient(blobName);
 
             await using var stream = file.OpenReadStream();
-            await blobClient.UploadAsync(stream, new BlobHttpHeaders { ContentType = file.ContentType ?? "application/octet-stream" });
+            await blobClient.UploadAsync(
+                stream,
+                new BlobUploadOptions
+                {
+                    HttpHeaders = new BlobHttpHeaders
+                    {
+                        ContentType = file.ContentType ?? "application/octet-stream"
+                    }
+                });
 
             if (!string.IsNullOrWhiteSpace(_options.PublicBaseUrl))
             {

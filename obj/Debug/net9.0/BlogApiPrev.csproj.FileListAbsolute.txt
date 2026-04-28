@@ -362,8 +362,8 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\publish-clean2\p
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.staticwebassets.runtime.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.staticwebassets.endpoints.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.exe
-C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.deps.json
-C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.runtimeconfig.json
+c:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.deps.json
+c:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.runtimeconfig.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\BlogApiPrev.pdb
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\bin\Debug\net9.0\Azure.Core.dll
@@ -515,9 +515,9 @@ C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\staticwebassets.
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiP.E37A9E8A.Up2Date
+c:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiP.E37A9E8A.Up2Date
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiPrev.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\refint\BlogApiPrev.dll
 C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiPrev.pdb
-C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiPrev.genruntimeconfig.cache
-C:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\ref\BlogApiPrev.dll
+c:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\BlogApiPrev.genruntimeconfig.cache
+c:\Users\mommy\Desktop\blogAPIPREV\BlogApiPrev\obj\Debug\net9.0\ref\BlogApiPrev.dll
